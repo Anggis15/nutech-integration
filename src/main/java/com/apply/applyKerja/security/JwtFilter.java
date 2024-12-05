@@ -49,6 +49,7 @@ public class JwtFilter extends OncePerRequestFilter {
             if(!"".equals(authorization) && authorization.startsWith("Bearer ") && authorization.length()>7)
             {
                 token = authorization.substring(7);//memotong setelah kata Bearer+spasi = 7 digit
+                token = Crypto.performDecrypt(token);
                 userName = jwtUtility.getUsernameFromToken(token);
                 if(userName != null &&
                         SecurityContextHolder.getContext().getAuthentication()==null)
@@ -67,7 +68,6 @@ public class JwtFilter extends OncePerRequestFilter {
         }
         catch (Exception ex)
         {
-            System.out.println("masuk ke sini");
             throw new AuthenticationException("Token tidak valid",ex);
         }
 

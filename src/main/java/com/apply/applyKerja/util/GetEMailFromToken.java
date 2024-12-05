@@ -10,6 +10,7 @@ Created on 04/12/24 10.42
 Version 1.0
 */
 
+import com.apply.applyKerja.security.Crypto;
 import com.apply.applyKerja.security.JwtUtility;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,7 @@ public class GetEMailFromToken {
         if(!"".equals(authorization) && authorization.startsWith("Bearer ") && authorization.length()>7)
         {
             token = authorization.substring(7);
+            token = Crypto.performDecrypt(token);
             email = jwtUtility.getUsernameFromToken(token);
 
         }
@@ -59,6 +61,7 @@ public class GetEMailFromToken {
         if(!"".equals(authorization) && authorization.startsWith("Bearer ") && authorization.length()>7)
         {
             token = authorization.substring(7);
+            token = Crypto.performDecrypt(token);
             id = jwtUtility.getIdFromToken(token);
 
         }

@@ -15,6 +15,7 @@ import com.apply.applyKerja.dto.response.ResponseProfile;
 import com.apply.applyKerja.model.UserProfile;
 import com.apply.applyKerja.repository.UserProfileRepository;
 import com.apply.applyKerja.security.BcryptImpl;
+import com.apply.applyKerja.security.Crypto;
 import com.apply.applyKerja.security.JwtUtility;
 import com.apply.applyKerja.util.GetEMailFromToken;
 import com.apply.applyKerja.util.GlobalFunction;
@@ -95,6 +96,7 @@ public class UserProfileService implements UserDetailsService {
         UserDetails userDetails = loadUserByUsername(user.getEmail());
         mapForClaims.put("uid",userProfile.getId());
         String token = jwtUtility.generateToken(userDetails,mapForClaims);
+        token = Crypto.performEncrypt(token);
         m.put("token", token);
         return GlobalFunction.generateResponse(0,HttpStatus.ACCEPTED,"Berhasil Login", m, request);
 

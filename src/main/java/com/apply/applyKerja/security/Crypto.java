@@ -52,7 +52,7 @@ public class Crypto {
 
         Long timeMilis = System.currentTimeMillis();
         System.out.println(timeMilis);
-        String strToEncrypt = "Ja4-MJTNDdCUdXYx1JO3obMFaoI";//put text to encrypt in here
+        String strToEncrypt = "eyJhbGciOiJIUzUxMiJ9.eyJ1aWQiOiJlNDFlNDEyZC03N2Y2LTQyYjQtYWQ1Mi0zZTQ5NmUxZGEwN2EiLCJzdWIiOiJhbmdnaUB0ZXN0LmNvbSIsImV4cCI6MTczMzM4NzM1NSwiaWF0IjoxNzMzMzgzNzU1fQ.iwxBjSITANYuGv_E3jfoMlM01R5-g7H0RHl2_eQbeyah8b2nghOxWQqHIBkSN578FFcCC8dnu8DzW3gNhNTzXw";//put text to encrypt in here
         String encryptionResult = new Crypto().performEncrypt(strToEncrypt);
         System.out.println("Encryption Result : "+encryptionResult);
 
