@@ -11,12 +11,20 @@ Version 1.0
 */
 
 import com.apply.applyKerja.config.JwtConfig;
+import com.apply.applyKerja.util.GlobalFunction;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
@@ -24,7 +32,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Component
-public class JwtUtility implements Serializable {
+public class JwtUtility implements Serializable, AuthenticationEntryPoint{
     private static final long serialVersionUID = 234234523523L;
     public static final long JWT_TOKEN_VALIDITY = 1 * 60 * 60;
 
@@ -101,6 +109,13 @@ public class JwtUtility implements Serializable {
         /** Sudah otomatis tervalidaasi jika expired date masih aktif */
         String username = getUsernameFromToken(token);
         return (username!=null && !isTokenExpired(token));
+    }
+
+    @Override
+    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
+        response.setContentType("application/json");
+        response.setStatus(401);
+        response.getWriter().write("{\"status\":108,\"message\":\"Token tidak tidak valid atau kadaluwarsa\",\"data\":null}");
     }
     /**
      * KONFIGURASI UNTUK JWT BERAKHIR DI SINI

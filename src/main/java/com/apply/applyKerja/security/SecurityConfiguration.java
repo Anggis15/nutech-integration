@@ -27,6 +27,9 @@ public class SecurityConfiguration {
     @Autowired
     private JwtFilter jwtFilter;
 
+    @Autowired
+    private JwtUtility jwtUtility;
+
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
@@ -48,9 +51,12 @@ public class SecurityConfiguration {
                                 "/swagger-ui/**",
                                 "/swagger-resources/**")
                         .permitAll().anyRequest().authenticated())
+                .httpBasic(httpdoc -> httpdoc
+                        .authenticationEntryPoint(jwtUtility))
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider()).addFilterBefore(
                         jwtFilter, UsernamePasswordAuthenticationFilter.class);
+
         return http.build();
     }
 
