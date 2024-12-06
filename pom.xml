@@ -133,12 +133,6 @@
 			<artifactId>bcprov-jdk15to18</artifactId>
 			<version>1.78.1</version>
 		</dependency>
-
-		<dependency>
-			<groupId>com.cloudinary</groupId>
-			<artifactId>cloudinary-http5</artifactId>
-			<version>2.0.0</version>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -152,22 +146,53 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-			<version>${project.parent.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
 	</dependencies>
 
 	<build>
+<!--		<finalName>test-kerja</finalName>-->
 		<plugins>
+			<!-- Set a compiler level -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-compiler-plugin</artifactId>-->
+<!--				<version>3.7.0</version>-->
+<!--				<configuration>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
+
+			<!-- project di build menjadi executeable jar -->
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-jar-plugin</artifactId>-->
+<!--				<configuration>-->
+<!--					<archive>-->
+<!--						<manifest>-->
+<!--							<mainClass>com.apply.applyKerja.ApplyKerjaApplication</mainClass>-->
+<!--						</manifest>-->
+<!--					</archive>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
+
+<!--			&lt;!&ndash; memasukkan dependencies ke dalam jar yang sudah di build &ndash;&gt;-->
+<!--			<plugin>-->
+<!--				<groupId>com.jolira</groupId>-->
+<!--				<artifactId>onejar-maven-plugin</artifactId>-->
+<!--				<version>1.4.4</version>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<goals>-->
+<!--							<goal>one-jar</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 

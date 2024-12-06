@@ -146,7 +146,7 @@ public class TransactionService {
         ResponseTransaction responseTransaction = new ResponseTransaction();
         responseTransaction.setInvoiceNumber(invoiceNumber);
         responseTransaction.setServiceCode(mstService.getServiceCode());
-        responseTransaction.setdescription(mstService.getServiceName());
+        responseTransaction.setDescription(mstService.getServiceName());
         responseTransaction.setTotalAmount(totalAmount);
         responseTransaction.setCreatedOn(time);
 
@@ -170,7 +170,7 @@ public class TransactionService {
                 ResponseTransaction transaction = new ResponseTransaction();
                 transaction.setInvoiceNumber(data.getInvoiceNumber());
                 transaction.setTransactionType(data.getTransactionType());
-                transaction.setdescription(data.getDescription());
+                transaction.setDescription(data.getDescription());
                 transaction.setTotalAmount(data.getTotalAmount());
                 transaction.setCreatedOn(data.getCreatedOn());
                 records.add(transaction);
@@ -184,7 +184,7 @@ public class TransactionService {
             ResponseTransaction transaction = new ResponseTransaction();
             transaction.setInvoiceNumber(data.getInvoiceNumber());
             transaction.setTransactionType(data.getTransactionType());
-            transaction.setdescription(data.getDescription());
+            transaction.setDescription(data.getDescription());
             transaction.setTotalAmount(data.getTotalAmount());
             transaction.setCreatedOn(data.getCreatedOn());
             records.add(transaction);
@@ -208,7 +208,7 @@ public class TransactionService {
             ResponseTransaction transaction = new ResponseTransaction();
             transaction.setInvoiceNumber(data.getInvoiceNumber());
             transaction.setTransactionType(data.getTransactionType());
-            transaction.setdescription(data.getDescription());
+            transaction.setDescription(data.getDescription());
             transaction.setTotalAmount(data.getTotalAmount());
             transaction.setCreatedOn(data.getCreatedOn());
             records.add(transaction);
